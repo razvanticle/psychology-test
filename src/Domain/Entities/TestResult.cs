@@ -18,4 +18,8 @@ public class TestResult : AuditableEntity
     ///     The maximum score of the result.
     /// </summary>
     public int MaxScore { get; set; }
+
+    public TestTemplate TestTemplate { get; set; }
+
+    public int TestTemplateId { get; set; }
 }

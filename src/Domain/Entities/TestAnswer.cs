@@ -13,4 +13,8 @@ public class TestAnswer : AuditableEntity
     ///     The score that will be used in calculating the test result.
     /// </summary>
     public int Score { get; set; }
+
+    public int TestQuestionId { get; set; }
+
+    public TestQuestion TestQuestion { get; set; }
 }

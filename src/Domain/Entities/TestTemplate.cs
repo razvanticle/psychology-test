@@ -13,7 +13,7 @@ public class TestTemplate : AuditableEntity
     /// <summary>
     ///     Name of the test.
     /// </summary>
-    public string Name { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     ///     Description of the test.
@@ -23,10 +23,10 @@ public class TestTemplate : AuditableEntity
     /// <summary>
     ///     List of all questions in the test.
     /// </summary>
-    public IEnumerable<TestQuestion> Questions { get; }
+    public IList<TestQuestion> Questions { get; }
 
     /// <summary>
     ///     The list of all possible results of the test.
     /// </summary>
-    public IEnumerable<TestResult> PossibleResults { get; }
+    public IList<TestResult> PossibleResults { get; }
 }

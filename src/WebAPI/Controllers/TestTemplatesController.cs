@@ -1,11 +1,11 @@
-﻿using Application.TestTemplates.Queries;
+﻿using Application.TestTemplates.Queries.GetTestTemplateById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
 [Route("templates")]
-public class TestTemplatesController:ControllerBase
+public class TestTemplatesController : ControllerBase
 {
     private readonly ISender sender;
 
@@ -13,11 +13,11 @@ public class TestTemplatesController:ControllerBase
     {
         this.sender = sender;
     }
-    
-    [HttpGet]
-    public async Task<IActionResult> Get()
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> Get(int id)
     {
-        var result = await sender.Send(new GetTestTemplatesQuery());
+        var result = await sender.Send(new GetTestTemplateByIdQuery(id));
 
         return Ok(result);
     }

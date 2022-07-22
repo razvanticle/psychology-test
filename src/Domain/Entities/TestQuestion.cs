@@ -12,7 +12,7 @@ public class TestQuestion : AuditableEntity
     /// <summary>
     ///     The content of the question.
     /// </summary>
-    public string Content { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     ///     Represents how much does the question weight in the final test result calculation.
@@ -22,5 +22,9 @@ public class TestQuestion : AuditableEntity
     /// <summary>
     ///     List of all possible answers.
     /// </summary>
-    public IEnumerable<TestAnswer> Answers { get; }
+    public IList<TestAnswer> Answers { get; }
+
+    public TestTemplate TestTemplate { get; set; }
+
+    public int TestTemplateId { get; set; }
 }
