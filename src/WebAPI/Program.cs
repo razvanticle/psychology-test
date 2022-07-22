@@ -23,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 
     using var scope = app.Services.CreateScope();
-    var seeder = scope.ServiceProvider.GetRequiredService<DatabaseSeeder>();
+    var seeder = scope.ServiceProvider.GetRequiredService<IDatabaseSeeder>();
     await seeder.SeedData();
 }
 
@@ -34,3 +34,9 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+// Make the Program class public so test projects can access it
+public partial class Program
+{
+}

@@ -17,7 +17,7 @@ public static class ConfigureServices
         services.AddScoped<IRepository, Repository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-        services.AddScoped<DatabaseSeeder>();
+        services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
         return services;
     }

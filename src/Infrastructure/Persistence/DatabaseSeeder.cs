@@ -3,7 +3,12 @@ using Domain.Entities;
 
 namespace Infrastructure.Persistence;
 
-public class DatabaseSeeder
+public interface IDatabaseSeeder
+{
+    Task SeedData(CancellationToken cancellationToken = default);
+}
+
+public class DatabaseSeeder : IDatabaseSeeder
 {
     private readonly IUnitOfWork unitOfWork;
 
