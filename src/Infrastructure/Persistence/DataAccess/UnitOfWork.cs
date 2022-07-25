@@ -31,11 +31,13 @@ public class UnitOfWork : IUnitOfWork
         context.Set<T>().Add(entity);
     }
 
+    /// <inheritdoc />
     public void Update<T>(T entity) where T : BaseEntity
     {
         context.Set<T>().Update(entity);
     }
 
+    /// <inheritdoc />
     public void Delete<T>(T entity) where T : BaseEntity
     {
         context.Set<T>().Remove(entity);

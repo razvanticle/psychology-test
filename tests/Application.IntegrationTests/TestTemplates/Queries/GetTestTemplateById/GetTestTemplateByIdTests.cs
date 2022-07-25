@@ -38,6 +38,6 @@ public class GetTestTemplateByIdTests : BaseTests
 
         // assert
         await act.Should().ThrowAsync<EntityNotFoundException>()
-            .WithMessage($"Entity \"{nameof(TestTemplate)}\" ({invalidId}) was not found.");
+            .WithMessage($"Entity \"{nameof(TestTemplate)}\" with id ({invalidId}) was not found.");
     }
 }

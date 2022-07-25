@@ -27,7 +27,10 @@ public class GetTestTemplateByIdQueryHandler : IRequestHandler<GetTestTemplateBy
             .ProjectTo<TestTemplateDto>(mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(cancellationToken);
 
-        if (entity == null) throw new EntityNotFoundException(nameof(TestTemplate), request.Id);
+        if (entity == null)
+        {
+            throw new EntityNotFoundException(nameof(TestTemplate), request.Id);
+        }
 
         return entity;
     }
