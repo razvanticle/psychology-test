@@ -5,7 +5,6 @@ import Home from './features/home';
 import Test from './features/test';
 import About from './features/about';
 
-
 import './custom.css'
 
 export default class App extends Component {
@@ -15,7 +14,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />        
-        <Route path='/test' component={Test} />
+        <Route path='/test/:id' component={Test} />
         <Route path='/about' component={About} />
       </Layout>
     );

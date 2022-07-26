@@ -6,6 +6,8 @@ public class TestQuestionDto
     {
         Answers = new List<TestAnswerDto>();
     }
+    
+    public int Id { get; set; }
 
     public string Title { get; set; }
 
