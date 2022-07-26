@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Application.Common.Dtos;
 using Application.Common.Exceptions;
 using Application.IntegrationTests.Common;
 using Application.TestTemplates.Queries.GetTestTemplateById;

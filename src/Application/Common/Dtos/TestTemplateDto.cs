@@ -1,4 +1,4 @@
-﻿namespace Application.TestTemplates.Queries.GetTestTemplateById;
+﻿namespace Application.Common.Dtos;
 
 public class TestTemplateDto
 {

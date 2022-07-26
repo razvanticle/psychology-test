@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Application.Common.Dtos;
+using MediatR;
 
 namespace Application.TestTemplates.Queries.GetTestTemplateById;
 

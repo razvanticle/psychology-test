@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using Application.Tests.Commands;
+using Application.Tests.Commands.ScoreCalculator;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,8 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(Assembly.GetExecutingAssembly());
+
+        services.AddScoped(typeof(IScoreCalculator<IEnumerable<WeightedScoreInput>>), typeof(WeightedSumScoreCalculator));
 
         return services;
     }

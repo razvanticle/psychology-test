@@ -12,12 +12,12 @@ public class TestResult : AuditableEntity
     /// <summary>
     ///     The minimum score of the result.
     /// </summary>
-    public int MinScore { get; set; }
+    public decimal MinScore { get; set; }
 
     /// <summary>
     ///     The maximum score of the result.
     /// </summary>
-    public int MaxScore { get; set; }
+    public decimal MaxScore { get; set; }
 
     public TestTemplate TestTemplate { get; set; }
 

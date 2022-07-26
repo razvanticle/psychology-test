@@ -1,4 +1,5 @@
-﻿using Application.Common.Exceptions;
+﻿using Application.Common.Dtos;
+using Application.Common.Exceptions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Domain.Entities;
@@ -23,7 +24,6 @@ public class GetTestTemplateByIdQueryHandler : IRequestHandler<GetTestTemplateBy
         var entity = await repository.GetEntities<TestTemplate>()
             .Where(x => x.Id == request.Id)
             .Include(x => x.Questions).ThenInclude(x => x.Answers)
-            .Include(x => x.PossibleResults)
             .ProjectTo<TestTemplateDto>(mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(cancellationToken);
 

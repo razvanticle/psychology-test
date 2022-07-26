@@ -27,4 +27,6 @@ public class TestQuestion : AuditableEntity
     public TestTemplate TestTemplate { get; set; }
 
     public int TestTemplateId { get; set; }
+
+    public decimal MaxScore => Answers.Select(x => x.Score).Max();
 }

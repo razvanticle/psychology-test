@@ -1,4 +1,5 @@
-﻿using Application.TestTemplates.Queries.GetTestTemplateById;
+﻿using Application.Common.Dtos;
+using Application.TestTemplates.Queries.GetTestTemplateById;
 using AutoMapper;
 using Domain.Entities;
 
