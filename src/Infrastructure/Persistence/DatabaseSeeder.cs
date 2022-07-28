@@ -29,7 +29,7 @@ public class DatabaseSeeder : IDatabaseSeeder
                 {
                     Title =
                         "You’re really busy at work and a colleague is telling you their life story and personal woes.",
-                    Weight = 0.2m,
+                    Weight = 0.34m,
                     Answers =
                     {
                         new TestAnswer
@@ -58,7 +58,7 @@ public class DatabaseSeeder : IDatabaseSeeder
                 {
                     Title =
                         "You’ve been sitting in the doctor’s waiting room for more than 25 minutes.",
-                    Weight = 0.2m,
+                    Weight = 0.33m,
                     Answers =
                     {
                         new TestAnswer
@@ -88,7 +88,7 @@ public class DatabaseSeeder : IDatabaseSeeder
                 {
                     Title =
                         "You’re having an animated discussion with a colleague regarding a project that you’re in charge of.",
-                    Weight = 0.2m,
+                    Weight = 0.33m,
                     Answers =
                     {
                         new TestAnswer
@@ -120,15 +120,15 @@ public class DatabaseSeeder : IDatabaseSeeder
                 {
                     Name = "Introvert",
                     Description = "You are an introvert.",
-                    MinScore = 1,
-                    MaxScore = 50
+                    MinScore = 0.1m,
+                    MaxScore = 0.6m
                 },
                 new PossibleTestResult
                 {
                     Name = "Extrovert",
                     Description = "You are an extrovert.",
-                    MinScore = 51,
-                    MaxScore = 100
+                    MinScore = 0.6001m,
+                    MaxScore = 1m
                 }
             }
         };
