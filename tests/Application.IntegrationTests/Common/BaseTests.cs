@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using AutoMapper;
 using Domain.Common;
+using Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,12 @@ public class BaseTests
     {
         applicationFactory = new CustomWebApplicationFactory();
         scopeFactory = applicationFactory.Services.GetRequiredService<IServiceScopeFactory>();
+    }
+
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
+    {
+        ClearDatabase();
     }
 
     protected Task<TResponse> SendRequest<TResponse>(IRequest<TResponse> request)
@@ -48,5 +55,13 @@ public class BaseTests
 
         return await repository.GetEntities<TEntity>()
             .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    protected bool ClearDatabase()
+    {
+        using var scope = scopeFactory.CreateScope();
+        
+        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        return context.Database.EnsureDeleted();
     }
 }
