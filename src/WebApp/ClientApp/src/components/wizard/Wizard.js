@@ -59,7 +59,7 @@ export default class Wizard extends React.Component {
                 validate={this.validate}
                 onSubmit={this.handleSubmit}
             >
-                {({handleSubmit, submitting, values}) => (
+                {({handleSubmit, submitting}) => (
                     <form onSubmit={handleSubmit}>
                         {activePage}
                         <div className="buttons">
@@ -76,7 +76,7 @@ export default class Wizard extends React.Component {
                             )}
                         </div>
 
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
+                        {/*<pre>{JSON.stringify(values, 0, 2)}</pre>*/}
                     </form>
                 )}
             </Form>
