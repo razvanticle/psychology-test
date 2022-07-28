@@ -18,7 +18,7 @@ public class TestDataBaseSeeder : IDatabaseSeeder
             {
                 Title =
                     "First question",
-                Weight = 0.2m,
+                Weight = 0.34m,
                 Answers =
                 {
                     new TestAnswer
@@ -35,6 +35,11 @@ public class TestDataBaseSeeder : IDatabaseSeeder
                     {
                         Content = "First question answer 3",
                         Score = 3
+                    },
+                    new TestAnswer
+                    {
+                        Content = "First question answer 4",
+                        Score = 4
                     }
                 }
             },
@@ -42,7 +47,7 @@ public class TestDataBaseSeeder : IDatabaseSeeder
             {
                 Title =
                     "Second question",
-                Weight = 0.2m,
+                Weight = 0.33m,
                 Answers =
                 {
                     new TestAnswer
@@ -67,7 +72,7 @@ public class TestDataBaseSeeder : IDatabaseSeeder
             {
                 Title =
                     "Third question",
-                Weight = 0.2m,
+                Weight = 0.33m,
                 Answers =
                 {
                     new TestAnswer
@@ -95,17 +100,19 @@ public class TestDataBaseSeeder : IDatabaseSeeder
         },
         PossibleResults =
         {
-            new TestResult
+            new PossibleTestResult
             {
                 Name = "Introvert",
-                MinScore = 1,
-                MaxScore = 50
+                Description = "You are an introvert.",
+                MinScore = 0.1m,
+                MaxScore = 0.6m
             },
-            new TestResult
+            new PossibleTestResult
             {
                 Name = "Extrovert",
-                MinScore = 51,
-                MaxScore = 100
+                Description = "You are an introvert.",
+                MinScore = 0.6001m,
+                MaxScore = 1m
             }
         }
     };

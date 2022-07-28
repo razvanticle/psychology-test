@@ -4,22 +4,17 @@ namespace Domain.Entities;
 
 public class TestResult : AuditableEntity
 {
-    /// <summary>
-    ///     The name of the result.
-    /// </summary>
-    public string Name { get; set; }
+    public int UserId { get; init; }
 
-    /// <summary>
-    ///     The minimum score of the result.
-    /// </summary>
-    public decimal MinScore { get; set; }
+    public int TestTemplateId { get; init; }
 
-    /// <summary>
-    ///     The maximum score of the result.
-    /// </summary>
-    public decimal MaxScore { get; set; }
+    public TestTemplate TestTemplate { get; init; }
 
-    public TestTemplate TestTemplate { get; set; }
+    public decimal Score { get; init; }
 
-    public int TestTemplateId { get; set; }
+    public string Result { get; init; }
+
+    public string Description { get; init; }
+
+    public IEnumerable<QuestionAnswer> Answers { get; init; } = new List<QuestionAnswer>();
 }

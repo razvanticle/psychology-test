@@ -2,9 +2,11 @@
 
 public class TestResultDto
 {
-    public string Name { get; set; }
+    public int Id { get; set; }
+    
+    public string Result { get; set; }
 
-    public int MinScore { get; set; }
+    public string Description { get; set; }
 
-    public int MaxScore { get; set; }
+    public int Score { get; set; }
 }

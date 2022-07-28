@@ -1,4 +1,4 @@
-﻿namespace Application.Tests.Commands.ScoreCalculator;
+﻿namespace Application.Tests.Commands.ComputeTestResult.ScoreCalculator;
 
 public interface IScoreCalculator<in TInput>
 {

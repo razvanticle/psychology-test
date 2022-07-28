@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using Application.Common.Exceptions;
-using Application.Tests.Commands.ScoreCalculator;
+using Application.Tests.Commands.ComputeTestResult.ScoreCalculator;
 using FluentAssertions;
 using NUnit.Framework;
 

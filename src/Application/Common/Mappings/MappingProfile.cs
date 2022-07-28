@@ -1,5 +1,4 @@
 ﻿using Application.Common.Dtos;
-using Application.TestTemplates.Queries.GetTestTemplateById;
 using AutoMapper;
 using Domain.Entities;
 
@@ -12,6 +11,7 @@ public class MappingProfile : Profile
         CreateMap<TestTemplate, TestTemplateDto>();
         CreateMap<TestQuestion, TestQuestionDto>();
         CreateMap<TestAnswer, TestAnswerDto>();
+        CreateMap<PossibleTestResult, TestResultDto>();
         CreateMap<TestResult, TestResultDto>();
     }
 }

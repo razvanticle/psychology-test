@@ -1,6 +1,6 @@
 ﻿using Application.Common.Exceptions;
 
-namespace Application.Tests.Commands.ScoreCalculator;
+namespace Application.Tests.Commands.ComputeTestResult.ScoreCalculator;
 
 public class WeightedSumScoreCalculator : IScoreCalculator<IEnumerable<WeightedScoreInput>>
 {

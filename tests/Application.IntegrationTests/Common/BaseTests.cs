@@ -1,6 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Application.Common.Interfaces;
 using AutoMapper;
+using Domain.Common;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 
@@ -8,8 +12,8 @@ namespace Application.IntegrationTests.Common;
 
 public class BaseTests
 {
-    private CustomWebApplicationFactory applicationFactory;
-    private IServiceScopeFactory scopeFactory;
+    private CustomWebApplicationFactory? applicationFactory;
+    private IServiceScopeFactory? scopeFactory;
 
     [OneTimeSetUp]
     public void OneTimeSetup()
@@ -34,5 +38,15 @@ public class BaseTests
         var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
 
         return mapper.Map<TSource, TDestination>(source);
+    }
+    
+    protected async Task<TEntity?> GetEntityById<TEntity>(int id) where TEntity : BaseEntity
+    {
+        using var scope = scopeFactory.CreateScope();
+
+        var repository = scope.ServiceProvider.GetRequiredService<IRepository>();
+
+        return await repository.GetEntities<TEntity>()
+            .FirstOrDefaultAsync(x => x.Id == id);
     }
 }

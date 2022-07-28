@@ -1,4 +1,5 @@
-﻿using Application.TestTemplates.Queries;
+﻿using Application.Common.Interfaces;
+using Application.TestTemplates.Queries;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.DataAccess;

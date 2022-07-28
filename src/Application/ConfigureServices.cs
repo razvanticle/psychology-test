@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
-using Application.Tests.Commands;
-using Application.Tests.Commands.ScoreCalculator;
+using Application.Tests.Commands.ComputeTestResult.ScoreCalculator;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

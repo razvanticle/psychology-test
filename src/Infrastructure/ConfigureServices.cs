@@ -1,5 +1,6 @@
 ﻿using Application.Common.Interfaces;
 using Application.TestTemplates.Queries;
+using Infrastructure.Emails;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.DataAccess;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,8 @@ public static class ConfigureServices
 
         services.AddScoped<IRepository, Repository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IEmailSender, EmailSender>();
+        services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
         services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 

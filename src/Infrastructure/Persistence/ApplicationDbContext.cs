@@ -17,6 +17,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<TestAnswer> TestAnswers => Set<TestAnswer>();
 
+    public DbSet<PossibleTestResult> PossibleTestResults => Set<PossibleTestResult>();
+    
     public DbSet<TestResult> TestResults => Set<TestResult>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

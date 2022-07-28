@@ -116,15 +116,17 @@ public class DatabaseSeeder : IDatabaseSeeder
             },
             PossibleResults =
             {
-                new TestResult
+                new PossibleTestResult
                 {
                     Name = "Introvert",
+                    Description = "You are an introvert.",
                     MinScore = 1,
                     MaxScore = 50
                 },
-                new TestResult
+                new PossibleTestResult
                 {
                     Name = "Extrovert",
+                    Description = "You are an extrovert.",
                     MinScore = 51,
                     MaxScore = 100
                 }
