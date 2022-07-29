@@ -12,6 +12,7 @@ public class MappingProfile : Profile
         CreateMap<TestQuestion, TestQuestionDto>();
         CreateMap<TestAnswer, TestAnswerDto>();
         CreateMap<PossibleTestResult, TestResultDto>();
-        CreateMap<TestResult, TestResultDto>();
+        CreateMap<TestResult, TestResultDto>()
+            .ForMember(dest => dest.TestName, opt => opt.MapFrom(src => src.TestTemplate.Title));
     }
 }

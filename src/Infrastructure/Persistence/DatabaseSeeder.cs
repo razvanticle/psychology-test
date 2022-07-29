@@ -119,14 +119,15 @@ public class DatabaseSeeder : IDatabaseSeeder
                 new PossibleTestResult
                 {
                     Name = "Introvert",
-                    Description = "You are an introvert.",
+                    Description =
+                        "You feel that living alone is to live happily, and you prefer hiding in a crowd rather than standing out in one. You are perpetually tormented by the idea of doing things wrong, not understanding or not being alert enough or intelligent enough to do what others expect of you. You lack in self-confidence and you seem to believe that others are better than you. While in a conversation, for example, you would be more likely to go along with the other’s points of view as you don’t fully respect your own opinions. Where there’s a low level task to complete or a service to be allotted, it’s you who volunteers. When people want to get out of a task, they naturally come to you as they know that you never say ‘no’.",
                     MinScore = 0.1m,
                     MaxScore = 0.6m
                 },
                 new PossibleTestResult
                 {
                     Name = "Extrovert",
-                    Description = "You are an extrovert.",
+                    Description = "At first glance, people find it hard to understand how you could be so comfortable organising your private life and then seem to lose the better part of your self-confidence when you’re in public. Maybe it’s a question of rhythm? If you feel comfortable in your domestic rhythm it’s perhaps because it works more on a short-term basis (day, week or more rarely a month). On the contrary, the rhythm of professional life seems less concrete and more distant as the professional agenda works more to quarterly or annual plans, that you have no control over. Is this the source of your lessened motivation? You can’t control all the cards so you have to adapt and, in fact, that doesn’t interest you at all? If this difference between work and home life doesn’t bother you, then carry on. However, if you feel frustrated by this imbalance, it could be useful to look into the deeper reasons (either on your own or with someone else) that keep you less focused on professional ambition.",
                     MinScore = 0.6001m,
                     MaxScore = 1m
                 }

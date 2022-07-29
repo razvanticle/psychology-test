@@ -2,11 +2,13 @@
 
 public class TestResultDto
 {
-    public int Id { get; set; }
+    public int Id { get; init; }
     
-    public string Result { get; set; }
+    public string Result { get; init; }
 
-    public string Description { get; set; }
+    public string Description { get; init; }
+    
+    public string TestName { get; init; }
 
-    public decimal Score { get; set; }
+    public decimal Score { get; init; }
 }

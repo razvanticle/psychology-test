@@ -4,6 +4,7 @@ import Layout from './components/layout';
 import Home from './features/home';
 import Test from './features/test';
 import About from './features/about';
+import Result from "./features/result";
 
 import './custom.css'
 
@@ -14,7 +15,8 @@ export default class App extends Component {
     return (
       <Layout>
         <Route exact path='/' component={Home} />        
-        <Route path='/test/:id' component={Test} />
+        <Route path='/tests/:id' component={Test} />
+        <Route path='/results/:id' component={Result} />
         <Route path='/about' component={About} />
       </Layout>
     );

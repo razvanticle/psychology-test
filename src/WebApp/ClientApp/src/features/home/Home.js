@@ -9,7 +9,7 @@ const Home = () => {
                 imperdiet. Donec porta consequat dolor nec ultrices. Sed pulvinar ante ac elementum lacinia.</p>
 
             <hr/>
-            <h1><Link to='/test/1'>Start personality test</Link></h1>
+            <h1><Link to='/tests/1'>Start personality test</Link></h1>
         </div>
     );
 };
