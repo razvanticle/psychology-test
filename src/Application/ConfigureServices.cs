@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using Application.Common.Behaviours;
 using Application.Tests.Commands.ComputeTestResult.ScoreCalculator;
+using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +13,9 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 
         services.AddScoped(typeof(IScoreCalculator<IEnumerable<WeightedScoreInput>>), typeof(WeightedSumScoreCalculator));
 

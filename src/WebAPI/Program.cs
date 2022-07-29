@@ -1,10 +1,16 @@
 using Application;
+using FluentValidation;
 using Infrastructure;
 using Infrastructure.Persistence;
+using WebAPI.ExceptionHandling;
+using WebAPI.ExceptionHandling.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddScoped<IExceptionHandler<Exception>, GenericExceptionHandler>();
+builder.Services.AddScoped<IExceptionHandler<ValidationException>, ValidationExceptionHandler>();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices();
@@ -42,6 +48,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseExceptionHandlingMiddleware();
 
 app.UseAuthorization();
 
