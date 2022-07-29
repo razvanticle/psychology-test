@@ -8,7 +8,7 @@ const Error = ({name}) => (
         name={name}
         subscribe={{touched: true, error: true}}
         render={({meta: {touched, error}}) =>
-            touched && error ? <span>{error}</span> : null
+            touched && error ? <span className="form-error">{error}</span> : null
         }
     />
 )
@@ -50,12 +50,13 @@ const Test = ({match, history}) => {
     }
 
     return (
-        <div>
+        <div className="container">
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
             {template && !loading && <div>
                 <h1>{template.title}</h1>
                 <p>{template.description}</p>
+                <hr />
                 <Wizard
                     initialValues={{
                         testTemplateId: template.id,
@@ -74,8 +75,9 @@ const Test = ({match, history}) => {
                                            value={`${answer.id}`} validate={validateQuestion}/> {answer.content}
                                 </p>
                             )}
+                            <div>
                             <Error name={`answers[${index}].answerId`}/>
-
+                            </div>
                         </Wizard.Page>
                     )}
                 </Wizard>
