@@ -8,5 +8,5 @@ public class TestResultDto
 
     public string Description { get; set; }
 
-    public int Score { get; set; }
+    public decimal Score { get; set; }
 }

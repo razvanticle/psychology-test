@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Field} from 'react-final-form'
 import Wizard from '../../components/wizard'
+import {apiClient} from '../../common/api/apiClient';
 
 const Error = ({name}) => (
     <Field
@@ -13,69 +14,46 @@ const Error = ({name}) => (
 )
 
 const Test = ({match, history}) => {
-    const [loading, setLoading] = useState(true);
-    const [template, setTemplateData] = useState(null);
-    const [error, setError] = useState("");
-    
-    const [resultLoading, setResultLoading] = useState(false);
+    const [template, setTemplate] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const {id} = match.params;
-        fetchTestTemplate(id);
+        getTemplate(id);
     }, [match]);
+
+    const getTemplate = (id) => {
+        setLoading(true);
+
+        apiClient.getById('templates', id)
+            .then(setTemplate)
+            .catch(setError)
+            .finally(() => setLoading(false));
+    }
+
+    const getResult = (data) => {
+        setLoading(true);
+
+        return apiClient.post('tests', data)
+            .catch(setError)
+            .finally(() => setLoading(false));
+    }
 
     const validateQuestion = (value) => {
         return (value ? undefined : 'Please select an answer');
     }
 
     const onSubmit = async (values) => {
-        await postData('https://localhost:7137/tests', values)
-            .then((data) => {
-                history.push(`/tests/${data.id}`);
-            });
+        const result = await getResult(values);
+        history.push(`/results/${result.id}`);
     }
 
-    const postData = async (url = '', data = {}) => {
-        try{
-            setResultLoading(true);
-            
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-            return response.json();    
-        }
-        catch (error){
-            setError(error.message || "Error when caomputing the test result");
-        }
-        finally {
-            setResultLoading(false);
-        }
-    }
-
-    const fetchTestTemplate = async (id) => {
-        try {
-            const template = await fetch(`https://localhost:7137/templates/${id}`);
-            const templateData = await template.json();
-
-            setTemplateData(templateData);         
-        }
-        catch (error){
-            setError(error.message || "Error when loading the test template");
-        }
-        finally {
-            setLoading(false);
-        }        
-    }
-   
     return (
         <div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {template && <div>
+            {template && !loading && <div>
                 <h1>{template.title}</h1>
                 <p>{template.description}</p>
                 <Wizard
@@ -102,7 +80,6 @@ const Test = ({match, history}) => {
                     )}
                 </Wizard>
             </div>}
-            {resultLoading && <p>Loading test results...</p>}
         </div>
     );
 }
