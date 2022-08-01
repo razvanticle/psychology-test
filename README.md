@@ -1,7 +1,13 @@
-
-
-1. [Introduction](#introduction)
-2. [Application Domain](#app-domain)
+- [Introduction <a name="introduction"></a>](#introduction--a-name--introduction----a-)
+- [Application Domain <a name="introduction"></a>](#application-domain--a-name--introduction----a-)
+    * [Test Score Calculation](#test-score-calculation)
+    * [TestTemplate](#testtemplate)
+    * [TestQuestion](#testquestion)
+    * [TestAnswer](#testanswer)
+    * [PossibleTestResult](#possibletestresult)
+- [Architecture](#architecture)
+- [Project structure](#project-structure)
+- [Future development](#future-development)
 
 ## Introduction <a name="introduction"></a>
 This is a Personality test application that allows users to see if they are an introvert or an extrovert. 
@@ -10,12 +16,12 @@ any psychology tests can be added.
 
 The application is built using .Net Core 6 and Entity Framework Core with an in-memory database.
 
-##Application Domain <a name="introduction"></a>
+## Application Domain <a name="introduction"></a>
 
-###Test Score Calculation
+### Test Score Calculation
 
 
-###TestTemplate
+### TestTemplate
 At the core of the application domain is the `TestTemplate` entity. As the name suggests, this represents a template
 for the actual tests. This contains the `Title`, `Description` and a list of possible answers and possible results of the 
 test.
@@ -27,7 +33,7 @@ test.
 | Questions   |  List  |          A list of all questions. |
 |PossibleResults|  List  | The list of all possible results. |
 
-###TestQuestion
+### TestQuestion
 The `TestQuestion` contains beside the `Title` a `Weight`. This is used for computing the test result, 
 and represents how much does the question weight in the score calculation.
 
@@ -38,7 +44,7 @@ and represents how much does the question weight in the score calculation.
 |MaxScore | decimal |                                           The maximum score of all answers. |
 | Answers  |  List   |                                    A list of all question possible answers. |
 
-###TestAnswer
+### TestAnswer
 The `TestAnswer` is composed of the answer `Content` and the answer `Score` which will is used in calculating the test result.
 
 | Property |  Type  |                                                                               Description |
@@ -46,12 +52,12 @@ The `TestAnswer` is composed of the answer `Content` and the answer `Score` whic
 | Content  | string |                                                                 The content of the aswer. |
 | Score    |  int   | The score of the answer. This will be used in the test calculation to compute the result. |
 
-###PossibleTestResult
+### PossibleTestResult
 Represents a possible result of the test. It contains the `Name` and `Description` of the result, but also the `MinScore`
 and the `MaxScore` that are used to choose the result for the test from the list of all possible results.
 
-##Architecture
+## Architecture
 
-##Project structure
+## Project structure
 
-##Future development
+## Future development
