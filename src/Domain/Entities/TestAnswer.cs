@@ -10,7 +10,7 @@ public class TestAnswer : AuditableEntity
     public string Content { get; set; }
 
     /// <summary>
-    ///     The score that will be used in calculating the test result.
+    ///     The score that is used in calculating the test result.
     /// </summary>
     public int Score { get; set; }
 

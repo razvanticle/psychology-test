@@ -1,4 +1,5 @@
-﻿using Domain.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Common;
 
 namespace Domain.Entities;
 
@@ -28,5 +29,6 @@ public class TestQuestion : AuditableEntity
 
     public int TestTemplateId { get; set; }
 
+    [NotMapped]
     public decimal MaxScore => Answers.Select(x => x.Score).Max();
 }
