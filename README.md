@@ -37,8 +37,8 @@ done by dividing the score of each question by the maximum score possible for th
 Then the weighted score of the question is computed by multiplying the question score by the weight of the question. Then the final test
 score is computed by adding the weighted scores for all questions.
 
-The tests has configured a list of possible results. Every possible result has a `MinScore` and a `MaxScore`. The test score is compare
-with these values to select the test result that corresponds to the caomputed score.
+The tests has configured a list of possible results. Every possible result has a `MinScore` and a `MaxScore`. The test score is compared
+with these values to select the test result that corresponds to the computed score.
 
 ### TestTemplate
 At the core of the application domain is the `TestTemplate` entity. As the name suggests, this represents a template
@@ -59,8 +59,8 @@ and represents how much does the question weight in the score calculation.
 | Property |  Type   | Description                                                                 |
 |----------|:-------:|-----------------------------------------------------------------------------|
 | Title    | string  | The title of the question.                                                  |
-| Weight   | decimal | Represents how much does the question weight in the test score calculation. |
-|MaxScore | decimal | The maximum score of all answers used for normalization.                    |
+| Weight   | decimal | Represents how much does the question weights in the test score calculation. |
+|MaxScore | decimal | The maximum score of all answers. This is used for normalization.                    |
 | Answers  |  List   | A list of all question possible answers.                                    |
 
 ### TestAnswer
@@ -81,7 +81,7 @@ layers and each layer has it's own responsibility.
 
 ![onion-architecture](https://user-images.githubusercontent.com/7803254/182377344-d9f9352d-bdc8-478a-8034-7e776314a531.png)
 
-At the core of the application is the `Domain` and the `Application` layers. The
+At the core of the application are the `Domain` and the `Application` layers. The
 domain contains business model and types and the application layer contains application specific business rules.
 The `Infrastructure` layer is responsible for implementing all the IO operations or external services integration.
 The most important thing is that all the dependencies are towards the center, so nothing in the inner layer knows anything about something in an outer layer.
