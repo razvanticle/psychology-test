@@ -87,6 +87,22 @@ The `Infrastructure` layer is responsible for implementing all the IO operations
 The most important thing is that all the dependencies are towards the center, so nothing in the inner layer knows anything about something in an outer layer.
 
 ## Project structure
+
+```
+|--src
+  |--Domain
+  |--Application
+  |--Infrastructure
+  |--WebAPI
+  |--WebApp
+|--tests
+  |--Application.IntegrationTests
+  |--Application.UnitTests
+  |--Domain.UnitTests
+  
+  
+```
+
 The project is structured based on the architecture diagram with some small changes. We have one project for `Domain`, `Application` and `Infrastructure`.
 For simplicity purposes the `Persistence` is in the same project as `Infrastructure`. The `Presentation` is splitted into two
 projects, we have one project for the `WebAPI` and one project for the `WebApp` which is the React frontend application.
