@@ -26,22 +26,31 @@ public class ComputeTestResultCommandHandler : IRequestHandler<ComputeTestResult
     
     public async Task<TestResultDto> Handle(ComputeTestResultCommand request, CancellationToken cancellationToken)
     {
-        var template = await repository.GetEntities<TestTemplate>()
-            .Where(x => x.Id == request.TestTemplateId)
-            .Include(x => x.Questions).ThenInclude(x => x.Answers)
-            .Include(x => x.PossibleResults)
-            .FirstOrDefaultAsync(cancellationToken);
-        
+        var template = await GetTestTemplate(request, cancellationToken);
         if (template == null)
         {
             throw new EntityNotFoundException(nameof(TestTemplate), request.TestTemplateId);
         }
         
-        var scoreCalculatorInputs = MapResponseToCalculatorInput(request.Answers, template);
-        var score = calculator.Compute(scoreCalculatorInputs);
+        var score = ComputeScore(request.Answers, template);
+        var scoreResult = template.GetResultForScore(score);
+        var testResult = await CreateTestResult(request, score, scoreResult, cancellationToken);
 
-        var result = template.GetResultForScore(score);
+        return mapper.Map<TestResultDto>(testResult);
+    }
 
+    private async Task<TestTemplate?> GetTestTemplate(ComputeTestResultCommand request, CancellationToken cancellationToken)
+    {
+        return await repository.GetEntities<TestTemplate>()
+            .Where(x => x.Id == request.TestTemplateId)
+            .Include(x => x.Questions).ThenInclude(x => x.Answers)
+            .Include(x => x.PossibleResults)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    private async Task<TestResult> CreateTestResult(ComputeTestResultCommand request,
+        decimal score, PossibleTestResult result, CancellationToken cancellationToken)
+    {
         var testResult = new TestResult
         {
             TestTemplateId = request.TestTemplateId,
@@ -53,18 +62,24 @@ public class ComputeTestResultCommandHandler : IRequestHandler<ComputeTestResult
         };
 
         testResult.AddDomainEvent(new TestResultCreatedEvent(testResult));
+        await AddEntity(testResult, cancellationToken);
         
-        await AddEntity(cancellationToken, testResult);
-        
-        return mapper.Map<TestResultDto>(testResult);
+        return testResult;
     }
 
-    private async Task AddEntity(CancellationToken cancellationToken, TestResult testResult)
+    private async Task AddEntity(TestResult testResult,CancellationToken cancellationToken)
     {
         unitOfWork.Add(testResult);
         await unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
+    // TODO: this should be extracted to a domain service
+    private decimal ComputeScore(IEnumerable<QuestionAnswer> answers, TestTemplate template)
+    {
+        var scoreCalculatorInputs = MapResponseToCalculatorInput(answers, template);
+        return calculator.Compute(scoreCalculatorInputs);
+    }
+    
     private static IEnumerable<WeightedScoreInput> MapResponseToCalculatorInput(IEnumerable<QuestionAnswer> answers, TestTemplate template)
     {
         var scoreCalculatorInputs = new List<WeightedScoreInput>();
