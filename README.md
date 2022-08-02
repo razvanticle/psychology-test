@@ -1,22 +1,23 @@
-- [Introduction <a name="introduction"></a>](#introduction--a-name--introduction----a-)
-- [Application Domain <a name="introduction"></a>](#application-domain--a-name--introduction----a-)
-    * [Test Score Calculation](#test-score-calculation)
-    * [TestTemplate](#testtemplate)
-    * [TestQuestion](#testquestion)
-    * [TestAnswer](#testanswer)
-    * [PossibleTestResult](#possibletestresult)
+- [Introduction](#introduction)
+- [Application Domain](#application-domain)
+  * [Test Score Calculation](#test-score-calculation)
+  * [TestTemplate](#testtemplate)
+  * [TestQuestion](#testquestion)
+  * [TestAnswer](#testanswer)
+  * [PossibleTestResult](#possibletestresult)
 - [Architecture](#architecture)
 - [Project structure](#project-structure)
 - [Future development](#future-development)
+- [Running the application](#running-the-application)
 
-## Introduction <a name="introduction"></a>
+## Introduction
 This is a Personality test application that allows users to see if they are an introvert or an extrovert. 
 The test is dynamically configured. Multiple tests can be added and the application is not limited to Personality tests only, 
 any psychology tests can be added. 
 
 The application is built using .Net Core 6 and Entity Framework Core with an in-memory database.
 
-## Application Domain <a name="introduction"></a>
+## Application Domain
 
 ### Test Score Calculation
 The score of the test is calculated using the Weighted Sum Method: https://www.geeksforgeeks.org/weighted-sum-method-multi-criteria-decision-making/.
@@ -109,3 +110,7 @@ projects, we have one project for the `WebAPI` and one project for the `WebApp` 
 1. Add user authentication
 2. Add user auditing for entities
 3. Add proper logging
+
+## Running the application
+The application can be run using docker. To start the application you can just run eiter `start.ps1` for Windows or `start.sh` for OS X or Linux.
+This will build the docker images and start the containers.

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://localhost:7137';
+const BASE_URL = 'http://localhost:7137';
 
 const getById = (resource, id) => {
     return axios

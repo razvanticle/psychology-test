@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  psychologies.api:
+    image: psychologies.api
+    container_name: psychologies.api
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Development"
+    restart: "no"
+    networks:
+      - psychologies-net
+    ports:
+      - "7137:80"
+      
+  psychologies.web:
+    image: psychologies.web
+    container_name: psychologies.web
+    environment:
+      - "ASPNETCORE_ENVIRONMENT=Development"
+    restart: "no"
+    networks:
+      - psychologies-net
+    ports:
+      - "44498:80"
+
+
+volumes:
+  mongo_data:
+  elastic_data:
+
+networks:
+  psychologies-net:
+    name: psychologies-net
+    driver: bridge
