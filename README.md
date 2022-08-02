@@ -99,8 +99,6 @@ The most important thing is that all the dependencies are towards the center, so
   |--Application.IntegrationTests
   |--Application.UnitTests
   |--Domain.UnitTests
-  
-  
 ```
 
 The project is structured based on the architecture diagram with some small changes. We have one project for `Domain`, `Application` and `Infrastructure`.
