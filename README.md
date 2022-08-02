@@ -76,10 +76,22 @@ Represents a possible result of the test. It contains the `Name` and `Descriptio
 and the `MaxScore` that are used to choose the result for the test from the list of all possible results.
 
 ## Architecture
-The application is based on the `Onion Architecture`.
+The application is based on the `Clean Architecture` pattern (also known as `Onion Architecture`). This means that the application is made in
+layers and each layer has it's own responsibility. 
+
 ![onion-architecture](https://user-images.githubusercontent.com/7803254/182377344-d9f9352d-bdc8-478a-8034-7e776314a531.png)
 
+At the core of the application is the `Domain` and the `Application` layers. The
+domain contains business model and types and the application layer contains application specific business rules.
+The `Infrastructure` layer is responsible for implementing all the IO operations or external services integration.
+The most important thing is that all the dependencies are towards the center, so nothing in the inner layer knows anything about something in an outer layer.
 
 ## Project structure
+The project is structured based on the architecture diagram with some small changes. We have one project for `Domain`, `Application` and `Infrastructure`.
+For simplicity purposes the `Persistence` is in the same project as `Infrastructure`. The `Presentation` is splitted into two
+projects, we have one project for the `WebAPI` and one project for the `WebApp` which is the React frontend application.
 
 ## Future development
+1. Add user authentication
+2. Add user auditing for entities
+3. Add proper logging
