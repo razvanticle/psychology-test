@@ -77,6 +77,7 @@ and the `MaxScore` that are used to choose the result for the test from the list
 
 ## Architecture
 The application is based on the `Onion Architecture`.
+![onion-architecture](https://user-images.githubusercontent.com/7803254/182377344-d9f9352d-bdc8-478a-8034-7e776314a531.png)
 
 
 ## Project structure
