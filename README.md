@@ -112,5 +112,7 @@ projects, we have one project for the `WebAPI` and one project for the `WebApp` 
 3. Add proper logging
 
 ## Running the application
-The application can be run using docker. To start the application you can just run eiter `start.ps1` for Windows or `start.sh` for OS X or Linux.
-This will build the docker images and start the containers.
+The application can be run using docker. To build the application docker images you can run `build.ps1` for Windows or `build.sh` for OS X or Linux.
+Then you can use `docker compose up -d` to start the containers and `docker compose down` to stop the containers.
+
+The web application is availale at http://localhost:44498/ and the API is available at http://localhost:7137/swagger/index.html.
